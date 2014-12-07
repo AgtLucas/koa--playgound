@@ -1,6 +1,7 @@
 var koa = require('koa');
-var app = koa();
+var koaBody = require('koa-body')();
 var router = require('koa-router');
+var app = koa();
 
 app.use(router(app));
 
@@ -24,5 +25,10 @@ app.get('/date', function *() {
   this.body = new Date();
 });
 
+app.post('/users', koaBody, function *(next) {
+  console.log(this.request.body);
+  this.body = JSON.stringify(this.request.body);
+});
 
 app.listen(3000);
+console.log('curl -i http://localhost:3000/ -d "name=test"');
