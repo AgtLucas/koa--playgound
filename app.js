@@ -18,4 +18,11 @@ app.use(requestTime('Response-titme'));
 
 app.get('/', function *() {
   this.body = 'Hello Koa!';
-})
+});
+
+app.get('/date', function *() {
+  this.body = new Date();
+});
+
+
+app.listen(3000);
