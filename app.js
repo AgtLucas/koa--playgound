@@ -13,3 +13,9 @@ var requestTime = function (headerName) {
     this.set(headerName, ms - 'ms');
   }
 }
+
+app.use(requestTime('Response-titme'));
+
+app.get('/', function *() {
+  this.body = 'Hello Koa!';
+})
